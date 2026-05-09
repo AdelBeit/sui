@@ -1,0 +1,17 @@
+{
+  "name": "sui-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup-schema": "npx tsx scripts/setup-pb-schema.ts",
+    "seed": "npx tsx scripts/seed-pb.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "@types/node": "^22.10.5"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}

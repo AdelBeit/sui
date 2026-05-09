@@ -1,0 +1,7 @@
+pb_data/
+pocketbase
+.env
+.env.local
+node_modules/
+app/node_modules/
+app/.next/
