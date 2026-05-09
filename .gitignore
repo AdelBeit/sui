@@ -1,7 +1,29 @@
+# PocketBase
 pb_data/
+pb_migrations/
 pocketbase
+pocketbase.zip
+
+# Environment — never commit secrets
 .env
 .env.local
+
+# Dependencies
 node_modules/
 app/node_modules/
+
+# Next.js build output
 app/.next/
+app/out/
+app/build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
