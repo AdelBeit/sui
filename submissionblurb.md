@@ -1,0 +1,20 @@
+Customer Rep Dashboard Generator is a prompt-to-UI system for enterprises with large customer-facing operations teams. Instead of asking internal teams to build and maintain one-off dashboards for every workflow, reps can describe a customer issue in plain language and instantly get a fully rendered, data-populated investigative dashboard with no manual querying or static reporting.
+
+The motivation is straightforward: many enterprises have large support, billing, or account management teams that all need tooling, but custom internal dashboards are expensive to build and often low priority to maintain. This product gives each rep a personalized dashboard for the specific customer issue in front of them, whether that is a billing dispute, an unauthorized charge, or an account anomaly. Generated dashboards can also be shared and remixed, so useful views spread across teams instead of being rebuilt from scratch.
+
+The application treats the LLM as a UI architect, not a chatbot. A rep types something like "Alice was double-charged this week, investigate" and the system runs a two-stage Gemini pipeline: the first call produces a structured `DataPlan` describing what data to fetch and how to compute it, and the second generates a complete A2UI v0.8 surface definition, a machine-readable JSON protocol for a live dashboard with charts, tables, and layout. The agent's output is not text to read. It is a UI to render.
+
+Stack:
+
+- A2UI v0.8: the core generative UI protocol. The LLM outputs `beginRendering` and `surfaceUpdate` messages describing a component tree. A custom React renderer walks that tree and resolves data-model paths like `/aggregates/by_day` and `/suspected_duplicates` into live values from the database.
+- LangChain + Gemini 2.5 Flash: a two-call pipeline with structured output via Zod schema for the `DataPlan`, followed by free-form JSON generation for the A2UI surface.
+- PocketBase running in a Daytona cloud sandbox over SSH: stores customers, charges, invoices, and generated views. It is queried server-side by the Next.js route handler, never by the browser.
+- Next.js 16 App Router: a single codebase for frontend and backend, with route handlers owning the full generation pipeline.
+- Tremor React: three custom chart components (`TremorBarChart`, `TremorLineChart`, `TremorDonutChart`) registered in the A2UI catalog so the LLM can emit them by name and the renderer can bind them to real data.
+- Daytona: provisions the persistent PocketBase sandbox, schema creation, and deterministic seed data through the Daytona TypeScript SDK.
+
+What makes it original: the LLM does not just answer a question. It decides what dashboard to build, which data paths to bind, how to order sections, and which chart types best explain the issue. For a double-charge investigation it can surface the duplicate pair prominently at the top with timestamps 90 seconds apart; for an unauthorized charge it can lead with category breakdown and reversal history. The layout itself is agent output. Every generated view is persisted at a stable URL, so reps can share investigation links directly and teammates can remix them for similar cases.
+
+Compared with no-code tools like Retool, this keeps the flexibility of prompt-driven internal tooling while lowering maintenance cost. The generated UI is rendered on a standard web-native stack with React and Next.js rather than relying on bloated exported codebases or proprietary runtime layers. That makes the system easier to extend, debug, and own long term.
+
+Technical execution: the A2UI catalog is a shared JSON contract between the LLM prompt and the frontend renderer. The model is constrained to emit only components that exist in the catalog, with a few-shot example in the system prompt showing correct `beginRendering` and `surfaceUpdate` separation, proper data-path bindings, and field-scoped `List` components. The renderer handles both the standard nested A2UI format and Gemini's flatter format, making it robust to output variation without failing silently.

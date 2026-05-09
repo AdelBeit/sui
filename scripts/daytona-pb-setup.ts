@@ -110,7 +110,7 @@ async function main() {
   console.log(`\n✓ PocketBase running in Daytona`);
   console.log(`  Admin UI: ${pbPublicUrl}/_/`);
   console.log(`  API:      ${pbPublicUrl}/api/`);
-  console.log(`  Login:    ${PB_ADMIN_EMAIL} / ${PB_ADMIN_PASSWORD}`);
+  console.log(`  Login:    ${PB_ADMIN_EMAIL} / ***`);
   console.log(`\nUpdate your app/.env.local:`);
   console.log(`  PB_URL=${pbPublicUrl}`);
 
