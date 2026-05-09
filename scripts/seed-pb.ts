@@ -296,11 +296,11 @@ async function main() {
   console.log(`Created customer: carla (${carla.id})`);
 
   const carlaChargesData = [
-    { daysAgo: 14, merchant: 'CloudInfra Ltd', amount: 0, category: 'subscription', status: 'captured' },
+    { daysAgo: 14, merchant: 'CloudInfra Ltd', amount: 1, category: 'subscription', status: 'captured' },
     { daysAgo: 10, merchant: 'DataSync Pro', amount: 250, category: 'usage', status: 'captured' },
     { daysAgo: 7, merchant: 'StorageMax', amount: 150, category: 'usage', status: 'captured' },
     { daysAgo: 3, merchant: 'ApiGateway Co', amount: 50, category: 'usage', status: 'captured' },
-    { daysAgo: 1, merchant: 'CloudInfra Ltd', amount: 0, category: 'subscription', status: 'captured' },
+    { daysAgo: 1, merchant: 'CloudInfra Ltd', amount: 1, category: 'subscription', status: 'captured' },
   ];
 
   for (const c of carlaChargesData) {
