@@ -6,6 +6,8 @@ A prompt-to-UI system for billing support reps. Describe a customer issue in pla
   <a href="https://68fwap572n8u3jpb.public.blob.vercel-storage.com/sui-demo/gen-cs-rep-dashboard-demo">▶ Watch the demo</a>
 </video>
 
+**[▶ Watch the demo](https://68fwap572n8u3jpb.public.blob.vercel-storage.com/sui-demo/gen-cs-rep-dashboard-demo)**
+
 ## What it does
 
 A rep types something like _"Alice was double-charged this week — investigate"_ and the system:
