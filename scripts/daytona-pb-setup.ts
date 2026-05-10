@@ -111,15 +111,15 @@ async function main() {
   console.log(`  Admin UI: ${pbPublicUrl}/_/`);
   console.log(`  API:      ${pbPublicUrl}/api/`);
   console.log(`  Login:    ${PB_ADMIN_EMAIL} / ***`);
-  console.log(`\nUpdate your app/.env.local:`);
+  console.log(`\nUpdate your .env.local:`);
   console.log(`  PB_URL=${pbPublicUrl}`);
 
-  // Auto-update app/.env.local
-  const envPath = resolve(__dirname, '../app/.env.local');
+  // Auto-update .env.local
+  const envPath = resolve(__dirname, '../.env.local');
   let envContent = readFileSync(envPath, 'utf-8');
   envContent = envContent.replace(/^PB_URL=.*/m, `PB_URL=${pbPublicUrl}`);
   require('fs').writeFileSync(envPath, envContent);
-  console.log('\napp/.env.local updated with new PB_URL.');
+  console.log('\n.env.local updated with new PB_URL.');
   console.log(`\nSandbox ID: ${sandbox.id}  (keep this if you need to delete it later)`);
 }
 
