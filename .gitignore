@@ -27,3 +27,6 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+
+# Local planning notes (ignored)
+docs/prompt-to-ui-extension-plan.md
