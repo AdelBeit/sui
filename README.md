@@ -2,7 +2,9 @@
 
 A prompt-to-UI system for billing support reps. Describe a customer issue in plain language and instantly get a fully-rendered, data-populated investigative dashboard — no manual querying, no static reports.
 
-<video src="https://68fwap572n8u3jpb.public.blob.vercel-storage.com/sui-demo/gen-cs-rep-dashboard-demo" controls width="100%"></video>
+<video src="https://68fwap572n8u3jpb.public.blob.vercel-storage.com/sui-demo/gen-cs-rep-dashboard-demo" controls width="100%">
+  <a href="https://68fwap572n8u3jpb.public.blob.vercel-storage.com/sui-demo/gen-cs-rep-dashboard-demo">▶ Watch the demo</a>
+</video>
 
 ## What it does
 
