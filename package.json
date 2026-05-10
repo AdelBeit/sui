@@ -1,18 +1,35 @@
 {
-  "name": "sui-scripts",
-  "version": "1.0.0",
+  "name": "app",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
     "setup-schema": "npx tsx scripts/setup-pb-schema.ts",
-    "seed": "npx tsx scripts/seed-pb.ts"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.5",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "seed": "npx tsx scripts/seed-pb.ts",
+    "daytona-setup": "npx tsx scripts/daytona-pb-setup.ts"
   },
   "dependencies": {
     "@daytonaio/sdk": "^0.173.0",
-    "dotenv": "^16.4.7"
+    "@langchain/core": "^1.1.45",
+    "@langchain/google-genai": "^2.1.30",
+    "@tremor/react": "^3.18.7",
+    "next": "16.2.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "tsx": "^4.19.2"
   }
 }
