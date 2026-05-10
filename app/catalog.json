@@ -1,0 +1,186 @@
+{
+  "catalogId": "https://billing-demo.internal/catalog/v1",
+  "components": {
+    "Text": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "literalString": { "type": "string" },
+            "path": { "type": "string" }
+          }
+        },
+        "usageHint": {
+          "type": "string",
+          "enum": ["h1", "h2", "h3", "h4", "h5", "caption", "body"]
+        }
+      },
+      "required": ["text"]
+    },
+    "Row": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "children": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "explicitList": { "type": "array", "items": { "type": "string" } },
+            "template": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "componentId": { "type": "string" },
+                "dataBinding": { "type": "string" }
+              },
+              "required": ["componentId", "dataBinding"]
+            }
+          }
+        },
+        "distribution": {
+          "type": "string",
+          "enum": ["center", "end", "spaceAround", "spaceBetween", "spaceEvenly", "start"]
+        },
+        "alignment": {
+          "type": "string",
+          "enum": ["start", "center", "end", "stretch"]
+        }
+      },
+      "required": ["children"]
+    },
+    "Column": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "children": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "explicitList": { "type": "array", "items": { "type": "string" } },
+            "template": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "componentId": { "type": "string" },
+                "dataBinding": { "type": "string" }
+              },
+              "required": ["componentId", "dataBinding"]
+            }
+          }
+        },
+        "distribution": {
+          "type": "string",
+          "enum": ["start", "center", "end", "spaceBetween", "spaceAround", "spaceEvenly"]
+        },
+        "alignment": {
+          "type": "string",
+          "enum": ["center", "end", "start", "stretch"]
+        }
+      },
+      "required": ["children"]
+    },
+    "Card": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "children": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "explicitList": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "title": { "type": "string" }
+      }
+    },
+    "List": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataPath": { "type": "string" },
+        "itemTemplate": { "type": "string" },
+        "emptyText": { "type": "string" }
+      },
+      "required": ["dataPath"]
+    },
+    "Divider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {}
+    },
+    "Button": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "child": { "type": "string" },
+        "primary": { "type": "boolean" },
+        "action": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string" },
+            "context": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "key": { "type": "string" },
+                  "value": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "path": { "type": "string" },
+                      "literalString": { "type": "string" },
+                      "literalNumber": { "type": "number" },
+                      "literalBoolean": { "type": "boolean" }
+                    }
+                  }
+                },
+                "required": ["key", "value"]
+              }
+            }
+          },
+          "required": ["name"]
+        }
+      },
+      "required": ["child", "action"]
+    },
+    "TremorBarChart": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataPath": { "type": "string" },
+        "indexKey": { "type": "string" },
+        "valueKey": { "type": "string" },
+        "title": { "type": "string" }
+      },
+      "required": ["dataPath", "indexKey", "valueKey"]
+    },
+    "TremorLineChart": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataPath": { "type": "string" },
+        "indexKey": { "type": "string" },
+        "valueKey": { "type": "string" },
+        "title": { "type": "string" }
+      },
+      "required": ["dataPath", "indexKey", "valueKey"]
+    },
+    "TremorDonutChart": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataPath": { "type": "string" },
+        "categoryKey": { "type": "string" },
+        "valueKey": { "type": "string" },
+        "title": { "type": "string" }
+      },
+      "required": ["dataPath", "categoryKey", "valueKey"]
+    }
+  }
+}
